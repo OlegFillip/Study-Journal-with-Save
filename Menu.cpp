@@ -30,6 +30,7 @@ void showMenu(Student*** students, int& studentsCount) {
 		int option = 0;
 		do
 		{
+
 			cin >> option;
 			if (option >= 0 && option <= 5) {
 				set = false;
