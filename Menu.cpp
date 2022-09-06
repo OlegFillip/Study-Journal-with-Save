@@ -15,6 +15,7 @@ void showMenu(Student*** students, int& studentsCount) {
 
 	do {
 
+
 		cout << "Choose option" << endl;
 		cout << "1- add student" << endl;
 		cout << "2- set student marks" << endl;
