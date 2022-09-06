@@ -75,3 +75,6 @@ void generateStudents(Student** students) {
 		students[i] = student;
 	}
 }
+
+
+//some coment, just why not
