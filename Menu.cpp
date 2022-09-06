@@ -14,6 +14,8 @@ void showMenu(Student*** students, int& studentsCount) {
 	bool noexit = true;
 
 	do {
+
+
 		cout << "Choose option" << endl;
 		cout << "1- add student" << endl;
 		cout << "2- set student marks" << endl;
@@ -22,7 +24,7 @@ void showMenu(Student*** students, int& studentsCount) {
 		cout << "5- Show owners" << endl;
 		cout << "6- Show Journal" << endl;
 		cout << "0- Exit program" << endl;
-		cout << "choose option 0-5 :" << endl;
+		cout << "choose option form 0  to 5 :" << endl;
 
 		bool set = true;
 		int option = 0;
