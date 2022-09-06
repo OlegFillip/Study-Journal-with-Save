@@ -73,5 +73,6 @@ void generateStudents(Student** students) {
 		student->journal = journal;
 
 		students[i] = student;
+		//kfjgskh
 	}
 }
