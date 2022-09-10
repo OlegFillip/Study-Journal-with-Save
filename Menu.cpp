@@ -84,7 +84,7 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 			SaveJournal(pstudents, studentsCount);
 			noexit = false;
 			break;
-		default:
+		case 7: setMarksBySubject(*students, studentsCount);
 			break;
 		}
 
@@ -221,8 +221,8 @@ void printStudentMarks(Student*** students, int quantity) {
 }
 
 void SaveJournal(Student*** students, int& studentsCount) {
-	ofstream fout;          // поток для записи
-	fout.open("Journal.txt"); // окрываем файл для записи
+	ofstream fout;          // ГЇГ®ГІГ®ГЄ Г¤Г«Гї Г§Г ГЇГЁГ±ГЁ
+	fout.open("Journal.txt"); // Г®ГЄГ°Г»ГўГ ГҐГ¬ ГґГ Г©Г« Г¤Г«Гї Г§Г ГЇГЁГ±ГЁ
 	if (fout.is_open())
 	{
 		char c = studentsCount + 47;
@@ -252,6 +252,7 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 
 		cout << "Journal file not found - generating sample data";
 		generateStudents(*students);
+
 	}
 	else {
 		cout << "File opened";
@@ -297,3 +298,4 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 	}
 
 }
+

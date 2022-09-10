@@ -101,7 +101,6 @@ void setMarksBySubject(Student** students, int studentsCount) {
 		bool mark;
 
 		cout <<endl <<"Mark for " << students[i]->FirstName<<" "<< students[i]->LastName << " y/n :";
-
 		char select;
 		bool selected_right = false;
 		do
