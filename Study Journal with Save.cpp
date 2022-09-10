@@ -11,7 +11,7 @@ int main()
 
 	ReadFromFile(&students, studentsCount);
 
-	//generateStudents(students);
+	//
 
 	showMenu(&students, studentsCount);
 

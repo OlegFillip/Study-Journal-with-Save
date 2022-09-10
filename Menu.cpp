@@ -9,7 +9,7 @@ using namespace std;
 
 
 
-void showMenu(Student*** students, int& studentsCount) {
+void showMenu(Student*** pstudents, int& studentsCount) {
 
 	bool noexit = true;
 
@@ -23,28 +23,30 @@ void showMenu(Student*** students, int& studentsCount) {
 		cout << "4- Print student marks" << endl;
 		cout << "5- Show owners" << endl;
 		cout << "6- Show Journal" << endl;
+		cout << "7- Set marks by Subject" << endl;
 		cout << "0- Exit program" << endl;
-		cout << "choose option form 0  to 5 :" << endl;
+		cout << "choose option form 0  to 7 :" << endl;
 
 		bool set = true;
 		int option = 0;
 		do
 		{
 			cin >> option;
-			if (option >= 0 && option <= 5) {
-				set = false;
+			if (option >= 0 && option <= 7) {
+				break;
 			}
+			cout << "Enter rigt value: ";
 
-		} while (set);
+		} while (true);
 
 		switch (option)
 		{
 		case 1:
-			addStudent(students, studentsCount);
+			addStudent(pstudents, studentsCount);
 			break;
 		case 2:
 
-			setStudentMarks(students, studentsCount);
+			setStudentMarks(pstudents, studentsCount);
 
 			break;
 		case 3:
@@ -54,7 +56,7 @@ void showMenu(Student*** students, int& studentsCount) {
 
 				cout << "Student number : " << i << endl;
 
-				printStudent((*students)[i]);
+				printStudent((*pstudents)[i]);
 
 
 			}
@@ -62,16 +64,19 @@ void showMenu(Student*** students, int& studentsCount) {
 
 			break;
 		case 4:
-			printStudentMarks(students, studentsCount);
+			printStudentMarks(pstudents, studentsCount);
 			break;
 		case 5:
 			break;
 
 		case 6:
-			ReadFromFile(students,studentsCount);
+			ReadFromFile(pstudents,studentsCount);
+			break;		
+		case 7:
+			setMarksBySubject(*pstudents, studentsCount);
 			break;
 		case 0:
-			SaveJournal(students, studentsCount);
+			SaveJournal(pstudents, studentsCount);
 			noexit = false;
 			break;
 		default:
@@ -80,8 +85,6 @@ void showMenu(Student*** students, int& studentsCount) {
 
 
 	} while (noexit);
-
-
 
 }
 
@@ -138,7 +141,6 @@ void setStudentMarks(Student*** students, int quantity) {
 	student->journal = newJournal;
 }
 
-
 void printStudent(Student* student) {
 
 	cout << student->FirstName << " " << student->MiddleName << " " << student->LastName << endl;
@@ -187,7 +189,6 @@ void addStudent(Student*** students, int& studentCount) {
 
 
 }
-
 
 void printStudentMarks(Student*** students, int quantity) {
 
@@ -244,7 +245,8 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 
 	if (!fin.is_open()) {
 
-		cout << "Error";
+		cout << "Journal file not found - generating sample data";
+		generateStudents(*students);
 	}
 	else {
 		cout << "File opened";
@@ -261,15 +263,6 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 		delete[] *students;
 
 		*students = new_st_arr;
-
-		//while ((char*)&students, sizeof(Student))
-		//{
-		//	int i = 0;
-		//	printStudent(*students[i]);
-		//	i++;
-		//}
-		
-		//Journal* newJournal = new Journal;
 
 		for (int i = 0; i < quantity; i++)
 		{
@@ -298,6 +291,4 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 		studentsCount = quantity;
 	}
 
-
-	
 }
