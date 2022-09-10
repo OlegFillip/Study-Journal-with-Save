@@ -33,3 +33,5 @@ void fillStudent(Student* student);
 void showAverage(Student* student);
 
 void generateStudents(Student** students);
+
+void setMarksBySubject(Student** students, int studentsCount);
