@@ -21,7 +21,7 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 		cout << "2- set student marks" << endl;
 		cout << "3- Print all students" << endl;
 		cout << "4- Print student marks" << endl;
-		cout << "5- Show owners" << endl;
+		cout << "5- change name" << endl;
 		cout << "6- Show Journal" << endl;
 		cout << "7- Set marks by Subject" << endl;
 		cout << "0- Exit program" << endl;
@@ -67,8 +67,9 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 			printStudentMarks(pstudents, studentsCount);
 			break;
 		case 5:
+             changeName(*pstudents, studentsCount);
 			break;
-
+			
 		case 6:
 			ReadFromFile(pstudents,studentsCount);
 			break;		

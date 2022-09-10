@@ -156,3 +156,43 @@ void setMarksBySubject(Student** students, int studentsCount) {
 	}
 
 }
+void changeName(Student** students, int studentsCount)
+
+{
+
+	int number_student;
+	cout << "Enter student number to change name: " << endl;
+	cin >> number_student;
+
+	
+		if (number_student >= 0 && number_student <= studentsCount) 
+		{
+			for (int i = 0; i < studentsCount; i++)
+			{
+				char* first = new char[50];
+				char* mid = new char[50];
+				char* last = new char[50];
+				if (i == number_student)
+				{
+					cout << "Enter FirstName: " << endl;
+					cin >> first;
+					students[i]->FirstName = first;
+					cout << "Enter MiddleName: " << endl;
+					cin >> mid;
+					students[i]->MiddleName = mid;
+					cout << "Enter LastName: " << endl;
+					cin >> last;
+					students[i]->LastName = last;
+
+
+				}
+			}
+		}
+		else {
+			cout << "This student is not on the list!!!" << endl;
+		}
+		
+
+
+	
+}
