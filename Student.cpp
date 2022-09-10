@@ -75,3 +75,83 @@ void generateStudents(Student** students) {
 		students[i] = student;
 	}
 }
+
+void setMarksBySubject(Student** students, int studentsCount) {
+
+	int subject;
+	bool selected_right = false;
+
+	do
+	{
+		cout << "Enter subject number 1 = " << SUBJECTS << ": ";
+		cin >> subject;
+
+		if (subject > 0 && subject < SUBJECTS + 1) {
+
+			selected_right = true;
+
+		}
+
+	} while (!selected_right);
+
+	cout << " Set marks for subject " << subject;
+
+	for (int i = 0; i < studentsCount; i++)
+	{
+		bool mark;
+
+		cout <<endl<< "Mark for " << students[i]->FirstName<<' '<< students[i]->LastName << "y/n :";
+		char select;
+		bool selected_right = false;
+		do
+		{
+			
+			cin >> select;
+
+			if (select == 'y'|| select == 'Y' || select=='n'||select=='N') {
+
+				selected_right = true;
+
+			}
+
+		} while (!selected_right);
+
+		
+
+			switch (subject)
+			{
+			case 1:
+				students[i]->journal->Subject1 = (select == 'y' || select == 'Y');
+					break;
+			case 2:
+				students[i]->journal->Subject2 = (select == 'y' || select == 'Y');
+				break;
+			case 3:
+				students[i]->journal->Subject3 = (select == 'y' || select == 'Y');
+				break;
+			case 4:
+				students[i]->journal->Subject4 = (select == 'y' || select == 'Y');
+				break;
+			case 5:
+				students[i]->journal->Subject5 = (select == 'y' || select == 'Y');
+				break;
+			case 6:
+				students[i]->journal->Subject6 = (select == 'y' || select == 'Y');
+				break;
+			case 7:
+				students[i]->journal->Subject7 = (select == 'y' || select == 'Y');
+				break;
+			case 8:
+				students[i]->journal->Subject8 = (select == 'y' || select == 'Y');
+				break;
+			case 9:
+				students[i]->journal->Subject9 = (select == 'y' || select == 'Y');
+				break;
+			case 10:
+				students[i]->journal->Subject10 = (select == 'y' || select == 'Y');
+				break;
+
+			}
+	}
+
+}

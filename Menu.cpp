@@ -23,15 +23,16 @@ void showMenu(Student*** students, int& studentsCount) {
 		cout << "4- Print student marks" << endl;
 		cout << "5- Show owners" << endl;
 		cout << "6- Show Journal" << endl;
+		cout << "7- Set by subject" << endl;
 		cout << "0- Exit program" << endl;
-		cout << "choose option form 0  to 5 :" << endl;
+		cout << "choose option form 0  to 7 :" << endl;
 
 		bool set = true;
 		int option = 0;
 		do
 		{
 			cin >> option;
-			if (option >= 0 && option <= 5) {
+			if (option >= 0 && option <= 7) {
 				set = false;
 			}
 
@@ -74,7 +75,7 @@ void showMenu(Student*** students, int& studentsCount) {
 			SaveJournal(students, studentsCount);
 			noexit = false;
 			break;
-		default:
+		case 7: setMarksBySubject(*students, studentsCount);
 			break;
 		}
 
@@ -243,8 +244,8 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 	fin.open("Journal.txt");
 
 	if (!fin.is_open()) {
-
-		cout << "Error";
+		generateStudents(*students);
+		cout << "Error file not exist, generating";
 	}
 	else {
 		cout << "File opened";
