@@ -11,16 +11,8 @@ int main()
 
 	ReadFromFile(&students, studentsCount);
 
-	//
-
 	showMenu(&students, studentsCount);
-
-
-
-
-
-	//fillStudent(newStudent);
-	//showAverage(newStudent);
-	//printStudent(newStudent);
+	
+	//End of a programm
 
 }
