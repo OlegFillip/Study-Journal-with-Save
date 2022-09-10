@@ -155,3 +155,21 @@ void setMarksBySubject(Student** students, int studentsCount) {
 	}
 
 }
+
+void changeNames(Student*** students, int studentsCount) {
+
+	int number = 0;
+	cout << "Enter student number to change name from 1 to " << studentsCount << endl;
+	cin >> number;
+
+	Student* student = (*students)[number - 1];
+
+	cout << "Enter new First name ";
+	cin >> student->FirstName;
+
+	cout << "Enter new Middle name ";
+	cin >> student->MiddleName;
+
+	cout << "Enter new Last name ";
+	cin >> student->LastName;
+}
