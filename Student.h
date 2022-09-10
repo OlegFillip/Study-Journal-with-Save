@@ -35,5 +35,5 @@ void showAverage(Student* student);
 void generateStudents(Student** students);
 
 void setMarksBySubject(Student** students, int studentsCount);
-
 void deleteStudent(Student*** pstudents, int& studentsCount);
+void changeName(Student** students, int studentsCount);
