@@ -24,6 +24,7 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 		cout << "5- Show owners" << endl;
 		cout << "6- Show Journal" << endl;
 		cout << "7- Set marks by Subject" << endl;
+		cout << "8- Delete student" << endl;
 		cout << "0- Exit program" << endl;
 		cout << "choose option form 0  to 7 :" << endl;
 
@@ -32,7 +33,7 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 		do
 		{
 			cin >> option;
-			if (option >= 0 && option <= 7) {
+			if (option >= 0 && option <= 8) {
 				break;
 			}
 			cout << "Enter rigt value: ";
@@ -54,7 +55,7 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 			for (int i = 0; i < studentsCount; i++)
 			{
 
-				cout << "Student number : " << i << endl;
+				cout << "Student number : " << i+1 << endl;
 
 				printStudent((*pstudents)[i]);
 
@@ -74,6 +75,9 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 			break;		
 		case 7:
 			setMarksBySubject(*pstudents, studentsCount);
+			break;		
+		case 8:
+			deleteStudent(pstudents, studentsCount);
 			break;
 		case 0:
 			SaveJournal(pstudents, studentsCount);
