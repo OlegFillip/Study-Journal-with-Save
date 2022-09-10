@@ -9,7 +9,7 @@ using namespace std;
 
 
 
-void showMenu(Student*** students, int& studentsCount) {
+void showMenu(Student*** pstudents, int& studentsCount) {
 
 	bool noexit = true;
 
@@ -21,9 +21,10 @@ void showMenu(Student*** students, int& studentsCount) {
 		cout << "2- set student marks" << endl;
 		cout << "3- Print all students" << endl;
 		cout << "4- Print student marks" << endl;
-		cout << "5- Change names" << endl;
+		cout << "5- change name" << endl;
 		cout << "6- Show Journal" << endl;
-		cout << "7- Set by subject" << endl;
+		cout << "7- Set marks by Subject" << endl;
+		cout << "8- Delete student" << endl;
 		cout << "0- Exit program" << endl;
 		cout << "choose option form 0  to 7 :" << endl;
 
@@ -32,20 +33,21 @@ void showMenu(Student*** students, int& studentsCount) {
 		do
 		{
 			cin >> option;
-			if (option >= 0 && option <= 7) {
-				set = false;
+			if (option >= 0 && option <= 8) {
+				break;
 			}
+			cout << "Enter rigt value: ";
 
-		} while (set);
+		} while (true);
 
 		switch (option)
 		{
 		case 1:
-			addStudent(students, studentsCount);
+			addStudent(pstudents, studentsCount);
 			break;
 		case 2:
 
-			setStudentMarks(students, studentsCount);
+			setStudentMarks(pstudents, studentsCount);
 
 			break;
 		case 3:
@@ -53,9 +55,9 @@ void showMenu(Student*** students, int& studentsCount) {
 			for (int i = 0; i < studentsCount; i++)
 			{
 
-				cout << "Student number : " << i << endl;
+				cout << "Student number : " << i+1 << endl;
 
-				printStudent((*students)[i]);
+				printStudent((*pstudents)[i]);
 
 
 			}
@@ -63,18 +65,23 @@ void showMenu(Student*** students, int& studentsCount) {
 
 			break;
 		case 4:
-			printStudentMarks(students, studentsCount);
+			printStudentMarks(pstudents, studentsCount);
 			break;
 		case 5:
-			changeNames(students, studentsCount);
-		
+            changeName(*pstudents, studentsCount);
 			break;
-
+			
 		case 6:
-			ReadFromFile(students,studentsCount);
+			ReadFromFile(pstudents,studentsCount);
+			break;		
+		case 7:
+			setMarksBySubject(*pstudents, studentsCount);
+			break;		
+		case 8:
+			deleteStudent(pstudents, studentsCount);
 			break;
 		case 0:
-			SaveJournal(students, studentsCount);
+			SaveJournal(pstudents, studentsCount);
 			noexit = false;
 			break;
 		case 7: setMarksBySubject(*students, studentsCount);
@@ -83,8 +90,6 @@ void showMenu(Student*** students, int& studentsCount) {
 
 
 	} while (noexit);
-
-
 
 }
 
@@ -141,7 +146,6 @@ void setStudentMarks(Student*** students, int quantity) {
 	student->journal = newJournal;
 }
 
-
 void printStudent(Student* student) {
 
 	cout << student->FirstName << " " << student->MiddleName << " " << student->LastName << endl;
@@ -191,7 +195,6 @@ void addStudent(Student*** students, int& studentCount) {
 
 }
 
-
 void printStudentMarks(Student*** students, int quantity) {
 
 	int number = 0;
@@ -218,8 +221,8 @@ void printStudentMarks(Student*** students, int quantity) {
 }
 
 void SaveJournal(Student*** students, int& studentsCount) {
-	ofstream fout;          // ïîòîê äëÿ çàïèñè
-	fout.open("Journal.txt"); // îêðûâàåì ôàéë äëÿ çàïèñè
+	ofstream fout;          // Ã¯Ã®Ã²Ã®Ãª Ã¤Ã«Ã¿ Ã§Ã Ã¯Ã¨Ã±Ã¨
+	fout.open("Journal.txt"); // Ã®ÃªÃ°Ã»Ã¢Ã Ã¥Ã¬ Ã´Ã Ã©Ã« Ã¤Ã«Ã¿ Ã§Ã Ã¯Ã¨Ã±Ã¨
 	if (fout.is_open())
 	{
 		char c = studentsCount + 47;
@@ -246,8 +249,10 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 	fin.open("Journal.txt");
 
 	if (!fin.is_open()) {
+
+		cout << "Journal file not found - generating sample data";
 		generateStudents(*students);
-		cout << "Error file not exist, generating";
+
 	}
 	else {
 		cout << "File opened";
@@ -264,15 +269,6 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 		delete[] *students;
 
 		*students = new_st_arr;
-
-		//while ((char*)&students, sizeof(Student))
-		//{
-		//	int i = 0;
-		//	printStudent(*students[i]);
-		//	i++;
-		//}
-		
-		//Journal* newJournal = new Journal;
 
 		for (int i = 0; i < quantity; i++)
 		{
@@ -301,7 +297,5 @@ void ReadFromFile(Student*** students,int& studentsCount) {
 		studentsCount = quantity;
 	}
 
-
-	
 }
 
