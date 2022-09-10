@@ -156,3 +156,96 @@ void setMarksBySubject(Student** students, int studentsCount) {
 	}
 
 }
+
+void changeName(Student** students, int studentsCount)
+{
+
+	int number_student;
+	cout << "Enter student number to change name: " << endl;
+	cin >> number_student;
+
+
+	if (number_student >= 0 && number_student <= studentsCount)
+	{
+		for (int i = 0; i < studentsCount; i++)
+		{
+			char* first = new char[50];
+			char* mid = new char[50];
+			char* last = new char[50];
+			if (i == number_student)
+			{
+				cout << "Enter FirstName: " << endl;
+				cin >> first;
+				students[i]->FirstName = first;
+				cout << "Enter MiddleName: " << endl;
+				cin >> mid;
+				students[i]->MiddleName = mid;
+				cout << "Enter LastName: " << endl;
+				cin >> last;
+				students[i]->LastName = last;
+
+
+			}
+		}
+	}
+	else {
+		cout << "This student is not on the list!!!" << endl;
+	}
+
+
+
+
+}
+
+void deleteStudent(Student*** pstudents, int& studentsCount) {
+
+	int student;
+
+	do {
+
+		cout << "Enter number of student from 1 to " << studentsCount << " :";
+		cin >> student;
+
+		if (student > 0 && student <= studentsCount) {
+			student--; //convert to index
+			break;
+		}
+		cout << "Enter right value :";
+
+	} while (true);
+
+	cout << "Deleting " << (*pstudents)[student]->FirstName << " " << (*pstudents)[student]->LastName << " ? y\n";
+	char select;
+	do
+	{
+		cin >> select;
+		if (select == 'y' || select == 'Y') break;
+		if (select == 'n' || select == 'N') return;
+
+	} while (true);
+
+
+	Student** new_students = new Student * [studentsCount - 1];
+	int new_index = 0;
+
+	for (int i = 0; i < studentsCount; i++)
+	{
+		if (i != student) {
+
+			new_students[new_index] = (*pstudents)[i];
+			new_index++;
+		}
+
+	}
+
+	delete (*pstudents)[student];
+
+	delete[](*pstudents);
+
+	studentsCount--;
+
+	*pstudents = new_students;
+
+
+
+}
