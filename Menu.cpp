@@ -68,7 +68,7 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 			printStudentMarks(pstudents, studentsCount);
 			break;
 		case 5:
-             changeName(*pstudents, studentsCount);
+            changeName(*pstudents, studentsCount);
 			break;
 			
 		case 6:

@@ -156,6 +156,7 @@ void setMarksBySubject(Student** students, int studentsCount) {
 	}
 
 }
+
 void changeName(Student** students, int studentsCount)
 {
 
@@ -171,6 +172,7 @@ void changeName(Student** students, int studentsCount)
 			char* first = new char[50];
 			char* mid = new char[50];
 			char* last = new char[50];
+
 			if (i == (number_student - 1))
 			{
 				cout << "Enter FirstName: " << endl;
