@@ -32,6 +32,7 @@ void showMenu(Student*** pstudents, int& studentsCount) {
 		int option = 0;
 		do
 		{
+
 			cin >> option;
 			if (option >= 0 && option <= 8) {
 				break;
